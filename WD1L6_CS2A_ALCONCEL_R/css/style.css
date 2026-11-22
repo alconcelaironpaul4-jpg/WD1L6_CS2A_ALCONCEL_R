@@ -1,0 +1,84 @@
+/* ==========================================================
+   style.css - custom styles layered on top of Bootstrap.
+   Theme tokens live in :root so one edit changes the whole site.
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --paper:  #eef2f7;   /* blueprint paper */
+  --ink:    #1b1f2a;   /* text */
+  --accent: #1d3bff;   /* ultramarine */
+  --mark:   #f2c230;   /* highlighter yellow */
+  --line:   rgba(29, 59, 255, .12);
+  --font-head: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+}
+[data-bs-theme="dark"] {
+  --paper:  #11151f;
+  --ink:    #e7ebf3;
+  --accent: #7f93ff;
+  --line:   rgba(127, 147, 255, .14);
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--paper); color: var(--ink); }
+h1, h2, h3, h4, .brand { font-family: var(--font-head); letter-spacing: -.02em; }
+.py-6 { padding-block: 6rem; }
+section { scroll-margin-top: 70px; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
+
+/* ---------- Navbar ---------- */
+.brand { font-weight: 800; color: var(--accent) !important; }
+.nav-link.active { color: var(--accent) !important; font-weight: 500; }
+
+/* ---------- Hero: graph-paper background ---------- */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 5rem;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.hero-photo {
+  max-width: 320px;
+  border-radius: 50%;
+  border: 6px solid var(--accent);
+  box-shadow: 14px 14px 0 var(--mark);   /* the one bold gesture on the page */
+}
+.motto {
+  border-left: 4px solid var(--mark);
+  padding-left: 1rem;
+  font-size: 1.25rem;
+  min-height: 3.2rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn-accent { background: var(--accent); color: #fff; border: 0; }
+.btn-accent:hover { background: var(--ink); color: var(--paper); }
+
+/* ---------- Section titles ---------- */
+.section-title {
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2.5rem;
+  display: inline-block;
+  background: linear-gradient(transparent 62%, var(--mark) 62%);  /* highlighter underline */
+}
+
+/* ---------- Principle cards ---------- */
+.principle { border: 2px solid var(--ink); border-radius: .25rem; padding: 1.25rem; height: 100%; background: var(--paper); }
+.principle i { font-size: 1.6rem; color: var(--accent); }
+
+/* ---------- Project cards ---------- */
+.project-card { border: 2px solid var(--ink); border-radius: .25rem; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+.project-card img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; cursor: pointer; }
+.project-card .card-body { flex: 1; }
+.term-badge { background: var(--mark); color: #1b1f2a; font-weight: 500; }
+
+/* ---------- Filter buttons ---------- */
+#projectFilters .btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ---------- Respect reduced-motion preference ---------- */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
